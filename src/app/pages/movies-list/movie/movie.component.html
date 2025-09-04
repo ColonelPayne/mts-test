@@ -1,0 +1,7 @@
+<div class="movie">
+  <p>{{ _movie?.name }}</p>
+  <ng-container *ngIf="_movie">
+    <input type="checkbox" id="myCheckbox" [(ngModel)]="_movie.isOnline" (change)="setStatus()"><ng-container *ngIf="_movie.isOnline; else offline"><span class="green">Online</span></ng-container>
+  </ng-container>
+</div>
+<ng-template #offline><span class="red">Offline</span></ng-template>

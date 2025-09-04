@@ -1,0 +1,18 @@
+<form [formGroup]="searchForm">
+  <p>Search movie: <input type="text" formControlName="term"> </p>
+</form>
+
+<div class="movies-list">
+  <ng-container *ngIf="movies$ | async as movies">
+    <ng-container >
+      <app-movie *ngFor="let movie of movies; trackBy: trackById" [movie]="movie" (statusChange)="changeMovie($event)"></app-movie>
+    </ng-container>
+  </ng-container>
+
+</div>
+
+<form [formGroup]="movieForm">
+  <p>Add movie: <input type="text" formControlName="name"> <button (click)="addMovie()">Add movie</button> </p>
+</form>
+
+<button (click)="setAllMoviesOnline()">Set all movies online</button>
